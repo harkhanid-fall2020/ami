@@ -17,3 +17,4 @@ packer validate ami.json
     -var 'ami_users=USERS'\
     ami.json
 ```
+
