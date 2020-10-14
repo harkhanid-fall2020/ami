@@ -1,0 +1,39 @@
+{
+    "variables": {
+      "aws_access_key": "",
+      "aws_secret_key": "",
+      "source_ami":"ami-0817d428a6fb68645",
+      "ami_users":""
+    },
+    "builders": [
+      {
+        "type": "amazon-ebs",
+        "access_key": "{{user `aws_access_key`}}",
+        "secret_key": "{{user `aws_secret_key`}}",
+        "region": "us-east-1",
+        "instance_type": "t2.micro",
+        "subnet_id":"{{user `subnet_id`}}",
+        "source_ami":"{{user `source_ami`}}",
+        "ssh_username": "ubuntu",
+        "ami_name": "CSYE6225-{{timestamp}}",
+        "ami_users":"{{user `ami_users`}}",
+        "launch_block_device_mappings":[{
+          "device_name":"/dev/sda1",
+          "volume_size":8,
+          "volume_type":"gp2",
+          "delete_on_termination":true
+        }]
+      }
+    ],
+    "provisioners":[
+      {
+        "type":"shell",
+        "environment_vars":["FOO=foo"],
+        "inline":[
+          "sudo apt-get update",
+          "sudo apt-get install -y nodejs",
+          "sudo apt-get install -y npm"
+          ]
+      }
+    ]
+  }
