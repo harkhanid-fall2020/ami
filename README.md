@@ -18,3 +18,4 @@ packer validate ami.json
     ami.json
 ```
 
+
