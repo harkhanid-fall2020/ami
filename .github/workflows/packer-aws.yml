@@ -1,0 +1,25 @@
+name: aws_packer
+
+on: 
+  pull_request:
+    branches:
+    - master
+
+jobs: 
+
+  aws-packer:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Running Packer container
+      
+      uses: docker://hashicorp/packer:light
+      env:
+        AWS_ACCESS_KEY: ${{secrets.AWS_ACCESS_KEY}}
+        AWS_SECRET_KEY: ${{secrets.AWS_SECRET_KEY}}
+        subnet_id: ${{secrets.subnet_id}}
+        ami_users: ${{secrets.ami_users}}
+      with:
+        args: "build /github/workspace/ami.json"
