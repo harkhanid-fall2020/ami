@@ -3,7 +3,7 @@
       "aws_access_key": "",
       "aws_secret_key": "",
       "source_ami":"ami-0817d428a6fb68645",
-      "ami_users":""
+      "ami_users":"207516790970"
     },
     "builders": [
       {
