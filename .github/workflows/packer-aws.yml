@@ -19,7 +19,7 @@ jobs:
       env:
         AWS_ACCESS_KEY: ${{secrets.AWS_ACCESS_KEY}}
         AWS_SECRET_KEY: ${{secrets.AWS_SECRET_KEY}}
-        subnet_id: ${{secrets.subnet_id}}
+        subnet_id: ${{secrets.SUBNET_ID}}
         ami_users: ${{secrets.ami_users}}
       with:
         args: "build /github/workspace/ami.json"
