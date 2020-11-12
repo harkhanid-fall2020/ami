@@ -16,5 +16,3 @@ packer validate ami.json
     -var 'subnet_id=SUBNET ID'\
     -var 'ami_users=USERS'\
     ami.json
-
-
